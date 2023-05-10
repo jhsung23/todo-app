@@ -5,10 +5,10 @@ export const initialData = {
     { id: 3, name: 'completed', to: '/completed' },
   ],
   tags: [
-    { id: 1, name: 'personal', to: '/personal' },
-    { id: 2, name: 'work', to: '/work' },
-    { id: 3, name: 'study', to: '/study' },
-    { id: 4, name: 'gathering', to: '/gathering' },
+    { id: 1, name: 'personal', icon: '👩🏻', to: '/personal' },
+    { id: 2, name: 'work', icon: '💼', to: '/work' },
+    { id: 3, name: 'study', icon: '📚', to: '/study' },
+    { id: 4, name: 'gathering', icon: '👯', to: '/gathering' },
   ],
   tasks: [
     {
