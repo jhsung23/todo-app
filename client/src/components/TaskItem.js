@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 
 import { mapItemToComponent } from '../lib/mapItemToComponent';
 import { toggle, star } from '../module/task';
+import { change } from '../module/modal';
 
 const Container = styled.div`
   width: 98%;
@@ -61,15 +62,20 @@ const StarWrapper = styled.div`
   }
 `;
 
-const TaskItem = ({ task, setClickedItem }) => {
+const TaskItem = ({ task }) => {
   const { id, name, isDone, isImportant, tag } = task;
   const dispatch = useDispatch();
 
   const handleToggle = (e) => {
     dispatch(toggle(id));
   };
+
   const handleStar = (e) => {
     dispatch(star(id));
+  };
+
+  const handleClickItem = (e) => {
+    dispatch(change(`${id}`));
   };
 
   return (
@@ -77,9 +83,11 @@ const TaskItem = ({ task, setClickedItem }) => {
       <CheckboxWrapper>
         <input type="checkbox" checked={isDone} onChange={handleToggle} id={id} />
       </CheckboxWrapper>
-      <ContentWrapper className={isDone ? 'done' : undefined} onClick={(e) => setClickedItem(id)}>
+      <ContentWrapper className={isDone ? 'done' : undefined} onClick={handleClickItem}>
         <p className="content">{name}</p>
-        <p className="tag">{mapItemToComponent[tag] + ' ' + tag}</p>
+        <p className="tag">
+          {mapItemToComponent[tag]} {tag}
+        </p>
       </ContentWrapper>
       <StarWrapper onClick={handleStar}>
         {isImportant ? <FaStar className="starred" /> : <FaRegStar className="not-starred" />}
