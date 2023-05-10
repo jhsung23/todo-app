@@ -9,8 +9,8 @@ const REMOVE = 'tasks/REMOVE';
 let id = 8;
 export const insert = createAction(INSERT, ({ name, content, tag }) => ({
   id: id++,
-  taskName: name,
-  taskContent: content,
+  name: name,
+  content: content,
   isDone: false,
   isImportant: false,
   tag: tag,
