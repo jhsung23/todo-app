@@ -6,7 +6,6 @@ import { insert } from '../module/task';
 
 const Container = styled.div`
   padding: 20px 20px;
-  /* height: 40vh; */
   min-width: 290px;
   height: 330px;
   display: flex;
@@ -68,19 +67,18 @@ const SubmitButton = styled.button`
   cursor: pointer;
 `;
 
-const TaskInput = ({ setIsOpen }) => {
+const TaskInput = () => {
   const [form, setForm] = useState({
     name: '',
     content: '',
     tag: 'personal',
   });
   const dispatch = useDispatch();
-  const { tags } = useSelector((state) => state);
+  const { tags } = useSelector((state) => state.task);
 
   const submit = (e) => {
     dispatch(insert(form));
     setForm({ name: '', content: '', tag: 'personal' });
-    setIsOpen(false);
   };
 
   return (
@@ -89,7 +87,7 @@ const TaskInput = ({ setIsOpen }) => {
       <Select onChange={(e) => setForm({ ...form, tag: e.target.value })}>
         {tags.map((tag) => (
           <option value={tag.name} key={tag.id}>
-            `${tag.icon} ${tag.name}`
+            {tag.icon} {tag.name}
           </option>
         ))}
       </Select>
