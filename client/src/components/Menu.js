@@ -52,7 +52,7 @@ const Menu = ({ menuTitle, menuData }) => {
             to={menu.to}
           >
             <MenuItem>
-              {mapItemToComponent[menu.name]}
+              {menu.icon ? menu.icon : mapItemToComponent[menu.name]}
               <span>{menu.name}</span>
             </MenuItem>
           </NavLink>

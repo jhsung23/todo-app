@@ -68,10 +68,11 @@ const P = styled.p`
 const TaskContent = () => {
   const dispatch = useDispatch();
 
-  const { tasks } = useSelector((state) => state.task);
+  const { tasks, tags } = useSelector((state) => state.task);
   const { modalContent } = useSelector((state) => state.modal);
 
   const taskData = tasks.filter((task) => task.id === Number(modalContent))[0];
+  const tagIcon = tags.filter((tag) => tag.name === taskData.tag)[0].icon;
 
   const handleToggle = () => {
     dispatch(toggle(taskData.id));
@@ -92,7 +93,7 @@ const TaskContent = () => {
       <ItemWrapper>
         <span className="item-name">태그</span>
         <span>
-          {mapItemToComponent[taskData.tag]} {taskData.tag}
+          {tagIcon} {taskData.tag}
         </span>
       </ItemWrapper>
       <ItemWrapper>

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { mapItemToComponent } from '../lib/mapItemToComponent';
 import { toggle, star } from '../module/task';
@@ -51,18 +51,13 @@ const ContentWrapper = styled.div`
 
 const StarWrapper = styled.div`
   flex-basis: 1;
-
-  & .not-starred {
-    color: #bbbbbb;
-  }
-
-  & .starred {
-    color: #1a85ff;
-  }
 `;
 
 const TaskItem = ({ task }) => {
   const { id, name, isDone, isImportant, tag } = task;
+  const { tags } = useSelector((state) => state.task);
+  const tagIcon = tags.filter((thisTag) => thisTag.name === tag)[0].icon;
+
   const dispatch = useDispatch();
 
   const handleToggle = (e) => {
@@ -85,7 +80,7 @@ const TaskItem = ({ task }) => {
       <ContentWrapper className={isDone ? 'done' : undefined} onClick={handleClickItem}>
         <p className="content">{name}</p>
         <p className="tag">
-          {mapItemToComponent[tag]} {tag}
+          {tagIcon} {tag}
         </p>
       </ContentWrapper>
       <StarWrapper onClick={handleStar}>
