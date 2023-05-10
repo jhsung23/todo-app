@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
-import { FaRegStar, FaStar } from 'react-icons/fa';
-import { mapItemToComponent } from '../lib/mapItemToComponent';
 
+import { mapItemToComponent } from '../lib/mapItemToComponent';
 import { star, toggle } from '../module/task';
 
 const Container = styled.div`
@@ -20,13 +19,6 @@ const TitleWrapper = styled.div`
   margin-top: 20px;
 
   & .star {
-    color: #1a85ff;
-    font-size: 1.3rem;
-    padding-bottom: 3px;
-  }
-
-  & .not-star {
-    color: #bbbbbb;
     font-size: 1.3rem;
     padding-bottom: 3px;
   }
@@ -93,11 +85,9 @@ const TaskContent = () => {
     <Container>
       <TitleWrapper>
         <Title>{taskData.name}</Title>
-        {taskData.isImportant ? (
-          <FaStar className="star" onClick={handleStar} />
-        ) : (
-          <FaRegStar className="not-star" onClick={handleStar} />
-        )}
+        {taskData.isImportant
+          ? mapItemToComponent.starred({ className: 'star', onClick: handleStar })
+          : mapItemToComponent.notStarred({ className: 'star', onClick: handleStar })}
       </TitleWrapper>
       <ItemWrapper>
         <span className="item-name">태그</span>

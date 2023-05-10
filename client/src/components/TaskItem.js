@@ -1,4 +1,3 @@
-import { FaRegStar, FaStar } from 'react-icons/fa';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 
@@ -90,7 +89,7 @@ const TaskItem = ({ task }) => {
         </p>
       </ContentWrapper>
       <StarWrapper onClick={handleStar}>
-        {isImportant ? <FaStar className="starred" /> : <FaRegStar className="not-starred" />}
+        {isImportant ? mapItemToComponent.starred() : mapItemToComponent.notStarred()}
       </StarWrapper>
     </Container>
   );
