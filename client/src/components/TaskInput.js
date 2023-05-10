@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { styled } from 'styled-components';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { insert } from '../module/task';
 
@@ -75,6 +75,7 @@ const TaskInput = ({ setIsOpen }) => {
     tag: 'personal',
   });
   const dispatch = useDispatch();
+  const { tags } = useSelector((state) => state);
 
   const submit = (e) => {
     dispatch(insert(form));
@@ -86,18 +87,11 @@ const TaskInput = ({ setIsOpen }) => {
     <Container>
       <Title>Task 추가하기</Title>
       <Select onChange={(e) => setForm({ ...form, tag: e.target.value })}>
-        <option value="personal" key="1">
-          👩🏻 personal
-        </option>
-        <option value="work" key="2">
-          💼 work
-        </option>
-        <option value="study" key="3">
-          📚 study
-        </option>
-        <option value="gathering" key="4">
-          👯 gathering
-        </option>
+        {tags.map((tag) => (
+          <option value={tag.name} key={tag.id}>
+            `${tag.icon} ${tag.name}`
+          </option>
+        ))}
       </Select>
       <Input
         id="task-input"
