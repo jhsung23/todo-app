@@ -5,10 +5,15 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import reducer from './module/task';
+import { createStore, combineReducers } from 'redux';
+import taskReducer from './module/task';
+import modalReducer from './module/modal';
 
-const store = createStore(reducer);
+const rootReducer = combineReducers({
+  task: taskReducer,
+  modal: modalReducer,
+});
+const store = createStore(rootReducer);
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
