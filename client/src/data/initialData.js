@@ -1,4 +1,5 @@
 export const initialData = {
+  modalContent: '',
   categories: [
     { id: 1, name: 'tasks', to: '/' },
     { id: 2, name: 'important', to: '/important' },
