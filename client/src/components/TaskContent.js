@@ -60,9 +60,12 @@ const P = styled.p`
   height: 80px;
   background-color: #e8e8e8;
   padding: 10px;
-  padding-left: 13px;
-  border-radius: 7px;
-  font-size: 0.9rem;
+  border-radius: 5px;
+  font-size: 0.8rem;
+
+  &.nothing {
+    color: #999;
+  }
 `;
 
 const TaskContent = () => {
@@ -99,7 +102,9 @@ const TaskContent = () => {
         <span className="item-name">완료</span>
         <input type="checkbox" checked={taskData.isDone} onChange={handleToggle} />
       </ItemWrapper>
-      <P>{taskData.content ? taskData.content : '내용이 없습니다.'}</P>
+      <P className={taskData.content ? undefined : 'nothing'}>
+        {taskData.content ? taskData.content : '내용이 없습니다.'}
+      </P>
     </Container>
   );
 };
