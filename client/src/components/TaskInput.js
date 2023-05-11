@@ -3,6 +3,7 @@ import { styled } from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { insert } from '../module/task';
+import { open, change } from '../module/modal';
 
 const Container = styled.div`
   padding: 20px 20px;
@@ -73,10 +74,16 @@ const TaskInput = () => {
     content: '',
     tag: 'personal',
   });
-  const dispatch = useDispatch();
   const { tags } = useSelector((state) => state.task);
 
+  const dispatch = useDispatch();
+
   const submit = (e) => {
+    setTimeout(() => {
+      dispatch(change(''));
+    }, 1000);
+
+    dispatch(open(false));
     dispatch(insert(form));
     setForm({ name: '', content: '', tag: 'personal' });
   };
