@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { mapItemToComponent } from '../lib/mapItemToComponent';
-import { toggle, star } from '../module/tasks';
+import { toggle, star, remove } from '../module/tasks';
 import { open, change } from '../module/modal';
 
 const Container = styled.div`
@@ -53,6 +53,18 @@ const StarWrapper = styled.div`
   flex-basis: 1;
 `;
 
+const RemoveWrapper = styled.div`
+  flex-basis: 1;
+  margin-left: 20px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  color: #bbbbbb;
+
+  &:hover {
+    color: red;
+  }
+`;
+
 const TaskItem = ({ task }) => {
   const { id, name, isDone, isImportant, tag } = task;
   const { tags } = useSelector((state) => state);
@@ -66,6 +78,10 @@ const TaskItem = ({ task }) => {
 
   const handleStar = (e) => {
     dispatch(star(id));
+  };
+
+  const handleRemove = (e) => {
+    dispatch(remove(id));
   };
 
   const handleClickItem = (e) => {
@@ -88,6 +104,7 @@ const TaskItem = ({ task }) => {
       <StarWrapper onClick={handleStar}>
         {isImportant ? mapItemToComponent.starred() : mapItemToComponent.notStarred()}
       </StarWrapper>
+      <RemoveWrapper onClick={handleRemove}>{mapItemToComponent.remove}</RemoveWrapper>
     </Container>
   );
 };
