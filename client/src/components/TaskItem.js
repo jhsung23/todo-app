@@ -69,6 +69,7 @@ const TaskItem = ({ task }) => {
   };
 
   const handleClickItem = (e) => {
+    e.stopPropagation();
     dispatch(open(true));
     dispatch(change(`${id}`));
   };

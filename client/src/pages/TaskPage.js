@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Header from '../components/Header';
 import TaskItem from '../components/TaskItem';
+import { open, change } from '../module/modal';
 
 const Container = styled.div`
   padding: 20px;
@@ -12,6 +13,8 @@ const Container = styled.div`
 `;
 
 const TaskPage = () => {
+  const dispatch = useDispatch();
+
   const { category, tag } = useParams();
   const { tasks } = useSelector((state) => state);
   let taskData;
@@ -27,8 +30,15 @@ const TaskPage = () => {
     taskData = tasks.filter((task) => task.tag === tag);
   }
 
+  const closeModal = (e) => {
+    setTimeout(() => {
+      dispatch(change(''));
+    }, 300);
+    dispatch(open(false));
+  };
+
   return (
-    <Container>
+    <Container onClick={closeModal}>
       <Header title={pageTitle.charAt(0).toUpperCase() + pageTitle.slice(1)} />
       {taskData.map((task) => (
         <TaskItem key={task.id} task={task} />
