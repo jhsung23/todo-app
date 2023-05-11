@@ -81,7 +81,7 @@ const TaskInput = () => {
   const submit = (e) => {
     setTimeout(() => {
       dispatch(change(''));
-    }, 1000);
+    }, 300);
 
     dispatch(open(false));
     dispatch(insert(form));

@@ -37,7 +37,7 @@ const Modal = () => {
   const handleClickClose = () => {
     setTimeout(() => {
       dispatch(change(''));
-    }, 1000);
+    }, 300);
     dispatch(open(false));
   };
 
