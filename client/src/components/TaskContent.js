@@ -68,8 +68,7 @@ const P = styled.p`
 const TaskContent = () => {
   const dispatch = useDispatch();
 
-  const { tasks, tags } = useSelector((state) => state.task);
-  const { modal } = useSelector((state) => state);
+  const { tasks, tags, modal } = useSelector((state) => state);
 
   const taskData = tasks.filter((task) => task.id === Number(modal.content))[0];
   const tagIcon = tags.filter((tag) => tag.name === taskData.tag)[0].icon;

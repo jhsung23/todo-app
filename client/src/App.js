@@ -22,7 +22,7 @@ const Main = styled.main`
 `;
 
 function App() {
-  const { categories, tags } = useSelector((state) => state.task);
+  const { categories, tags } = useSelector((state) => state);
 
   return (
     <div className="App">

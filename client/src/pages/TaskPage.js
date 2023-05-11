@@ -11,7 +11,7 @@ const Container = styled.div`
 `;
 
 const TaskPage = ({ category, tag }) => {
-  const { tasks } = useSelector((state) => state.task);
+  const { tasks } = useSelector((state) => state);
   let taskData;
   let pageTitle = category || tag;
 

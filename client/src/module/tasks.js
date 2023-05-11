@@ -21,26 +21,14 @@ export const remove = createAction(REMOVE, (id) => id);
 
 const task = handleActions(
   {
-    [INSERT]: (state, { payload: task }) => ({
-      ...state,
-      tasks: [...state.tasks, task],
-    }),
-    [REMOVE]: (state, { payload: id }) => ({
-      ...state,
-      tasks: state.tasks.filter((task) => task.id !== id),
-    }),
-    [STAR]: (state, { payload: id }) => ({
-      ...state,
-      tasks: state.tasks.map((task) =>
-        task.id === id ? { ...task, isImportant: !task.isImportant } : task
-      ),
-    }),
-    [TOGGLE]: (state, { payload: id }) => ({
-      ...state,
-      tasks: state.tasks.map((task) => (task.id === id ? { ...task, isDone: !task.isDone } : task)),
-    }),
+    [INSERT]: (state, { payload: task }) => [...state, task],
+    [REMOVE]: (state, { payload: id }) => state.filter((task) => task.id !== id),
+    [STAR]: (state, { payload: id }) =>
+      state.map((task) => (task.id === id ? { ...task, isImportant: !task.isImportant } : task)),
+    [TOGGLE]: (state, { payload: id }) =>
+      state.map((task) => (task.id === id ? { ...task, isDone: !task.isDone } : task)),
   },
-  initialData
+  initialData.tasks
 );
 
 export default task;

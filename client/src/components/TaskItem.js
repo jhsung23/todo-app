@@ -55,7 +55,7 @@ const StarWrapper = styled.div`
 
 const TaskItem = ({ task }) => {
   const { id, name, isDone, isImportant, tag } = task;
-  const { tags } = useSelector((state) => state.task);
+  const { tags } = useSelector((state) => state);
   const tagIcon = tags.filter((thisTag) => thisTag.name === tag)[0].icon;
 
   const dispatch = useDispatch();

@@ -74,7 +74,7 @@ const TaskInput = () => {
     content: '',
     tag: 'personal',
   });
-  const { tags } = useSelector((state) => state.task);
+  const { tags } = useSelector((state) => state);
 
   const dispatch = useDispatch();
 

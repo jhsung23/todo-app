@@ -8,10 +8,14 @@ import { Provider } from 'react-redux';
 import { createStore, combineReducers } from 'redux';
 import taskReducer from './module/tasks';
 import modalReducer from './module/modal';
+import categoriesReducer from './module/categories';
+import tagsReducer from './module/tags';
 
 const rootReducer = combineReducers({
-  task: taskReducer,
+  tasks: taskReducer,
   modal: modalReducer,
+  categories: categoriesReducer,
+  tags: tagsReducer,
 });
 const store = createStore(rootReducer);
 const root = ReactDOM.createRoot(document.getElementById('root'));
