@@ -7,6 +7,7 @@ import Menu from './components/Menu';
 import TaskPage from './pages/TaskPage';
 import Logo from './components/Logo';
 import Modal from './components/Modal';
+import AddTask from './components/AddTask';
 
 const Nav = styled.nav`
   height: 100vh;
@@ -42,6 +43,7 @@ function App() {
         </Routes>
       </Main>
       <Modal />
+      <AddTask />
     </div>
   );
 }
