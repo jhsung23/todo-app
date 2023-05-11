@@ -69,9 +69,9 @@ const TaskContent = () => {
   const dispatch = useDispatch();
 
   const { tasks, tags } = useSelector((state) => state.task);
-  const { modalContent } = useSelector((state) => state.modal);
+  const { modal } = useSelector((state) => state);
 
-  const taskData = tasks.filter((task) => task.id === Number(modalContent))[0];
+  const taskData = tasks.filter((task) => task.id === Number(modal.content))[0];
   const tagIcon = tags.filter((tag) => tag.name === taskData.tag)[0].icon;
 
   const handleToggle = () => {

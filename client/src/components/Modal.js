@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { FiChevronsRight } from 'react-icons/fi';
-import { change } from '../module/modal';
+import { open, change } from '../module/modal';
 import TaskInput from '../components/TaskInput';
 import TaskContent from '../components/TaskContent';
 
@@ -30,18 +30,30 @@ const Aside = styled.aside`
 `;
 
 const Modal = () => {
-  const { modalContent } = useSelector((state) => state.modal);
+  const { modal } = useSelector((state) => state);
 
   const dispatch = useDispatch();
 
   const handleClickClose = () => {
-    dispatch(change(''));
+    setTimeout(() => {
+      dispatch(change(''));
+    }, 1000);
+    dispatch(open(false));
+  };
+
+  const setContent = () => {
+    if (modal.content === 'input') {
+      return <TaskInput />;
+    }
+    if (modal.content !== '') {
+      return <TaskContent />;
+    }
   };
 
   return (
-    <Aside className={modalContent ? 'open' : undefined}>
+    <Aside className={modal.isOpen ? 'open' : undefined}>
       <FiChevronsRight id="close-button" onClick={handleClickClose} />
-      {modalContent !== '' ? modalContent === 'input' ? <TaskInput /> : <TaskContent /> : undefined}
+      {setContent()}
     </Aside>
   );
 };

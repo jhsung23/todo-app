@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { mapItemToComponent } from '../lib/mapItemToComponent';
 import { toggle, star } from '../module/task';
-import { change } from '../module/modal';
+import { open, change } from '../module/modal';
 
 const Container = styled.div`
   width: 98%;
@@ -69,6 +69,7 @@ const TaskItem = ({ task }) => {
   };
 
   const handleClickItem = (e) => {
+    dispatch(open(true));
     dispatch(change(`${id}`));
   };
 

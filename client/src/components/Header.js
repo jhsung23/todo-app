@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
 import { useDispatch } from 'react-redux';
-import { change } from '../module/modal';
+import { change, open } from '../module/modal';
 
 const Container = styled.div`
   display: flex;
@@ -47,6 +47,7 @@ const Header = ({ title }) => {
   const dispatch = useDispatch();
 
   const handleClick = () => {
+    dispatch(open(true));
     dispatch(change('input'));
   };
 
