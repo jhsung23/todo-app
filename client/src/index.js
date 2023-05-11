@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { createStore, combineReducers } from 'redux';
-import taskReducer from './module/task';
+import taskReducer from './module/tasks';
 import modalReducer from './module/modal';
 
 const rootReducer = combineReducers({

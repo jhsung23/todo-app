@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { styled } from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { insert } from '../module/task';
+import { insert } from '../module/tasks';
 import { open, change } from '../module/modal';
 
 const Container = styled.div`

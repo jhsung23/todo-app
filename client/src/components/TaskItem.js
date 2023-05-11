@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { mapItemToComponent } from '../lib/mapItemToComponent';
-import { toggle, star } from '../module/task';
+import { toggle, star } from '../module/tasks';
 import { open, change } from '../module/modal';
 
 const Container = styled.div`
