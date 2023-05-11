@@ -1,8 +1,9 @@
 import styled from 'styled-components';
+import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import Header from '../components/Header';
 import TaskItem from '../components/TaskItem';
-import { useSelector } from 'react-redux';
 
 const Container = styled.div`
   padding: 20px;
@@ -10,7 +11,8 @@ const Container = styled.div`
   height: 100vh;
 `;
 
-const TaskPage = ({ category, tag }) => {
+const TaskPage = () => {
+  const { category, tag } = useParams();
   const { tasks } = useSelector((state) => state);
   let taskData;
   let pageTitle = category || tag;

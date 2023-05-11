@@ -4,15 +4,15 @@ export const initialData = {
     content: '',
   },
   categories: [
-    { id: 1, name: 'tasks', to: '/' },
-    { id: 2, name: 'important', to: '/important' },
-    { id: 3, name: 'completed', to: '/completed' },
+    { id: 1, name: 'tasks' },
+    { id: 2, name: 'important' },
+    { id: 3, name: 'completed' },
   ],
   tags: [
-    { id: 1, name: 'personal', icon: '👩🏻', to: '/personal' },
-    { id: 2, name: 'work', icon: '💼', to: '/work' },
-    { id: 3, name: 'study', icon: '📚', to: '/study' },
-    { id: 4, name: 'gathering', icon: '👯', to: '/gathering' },
+    { id: 1, name: 'personal', icon: '👩🏻' },
+    { id: 2, name: 'work', icon: '💼' },
+    { id: 3, name: 'study', icon: '📚' },
+    { id: 4, name: 'gathering', icon: '👯' },
   ],
   tasks: [
     {

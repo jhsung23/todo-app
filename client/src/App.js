@@ -34,14 +34,10 @@ function App() {
       <Main>
         <Routes>
           {categories.map((category) => (
-            <Route
-              key={category.id}
-              path={category.to}
-              element={<TaskPage category={category.name} />}
-            />
+            <Route key={category.id} path="/category/:category" element={<TaskPage />} />
           ))}
           {tags.map((tag) => (
-            <Route key={tag.id} path={tag.to} element={<TaskPage tag={tag.name} />} />
+            <Route key={tag.id} path="/tag/:tag" element={<TaskPage />} />
           ))}
         </Routes>
       </Main>

@@ -49,7 +49,7 @@ const Menu = ({ menuTitle, menuData }) => {
             key={menu.id}
             id="nav-link"
             className={({ isActive }) => (isActive ? 'active-style' : undefined)}
-            to={menu.to}
+            to={menu.icon ? `/tag/${menu.name}` : `/category/${menu.name}`}
           >
             <MenuItem>
               {menu.icon ? menu.icon : mapItemToComponent[menu.name]}
